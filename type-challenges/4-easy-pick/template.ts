@@ -6,6 +6,21 @@ type MyPick<T, K extends keyof T> = {
 // 1. 返回一个对象
 // 2. 遍历foreach  mapped
 // - https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
+type OptionsFlags<Type> = {
+  [Property in keyof Type]: boolean
+}
+
+type FeatureFlags = {
+  darkMode: () => void;
+  newUserProfile: () => void;
+}
+
+type FeatureOptions = OptionsFlags<FeatureFlags>
+// type FeatureOptions =  {
+//   darkMode: boolean;
+//   newUserProfile: boolean
+// }
+
 // 3. todo[key] 取值 indexed
 // - https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
 // 4. 看看 key 在不在 todo 里面
@@ -13,3 +28,4 @@ type MyPick<T, K extends keyof T> = {
 //     - https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types
 //    2. extends 条件约束
 //     - https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-constraints
+
